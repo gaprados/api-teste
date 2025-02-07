@@ -1,12 +1,11 @@
 import fastify from 'fastify';
+import { routes } from './routes';
 
 const app = fastify();
 
-app.get('/', async (request, reply) => {
-  return { hello: 'world' };
-});
+app.register(routes)
 
 app.listen({
   host: '0.0.0.0',
   port: 3333
-})
+}).then(() => console.log('🚀 Server is running!'))
